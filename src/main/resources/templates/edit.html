@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글 수정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333333;
+        }
+
+        label {
+            font-weight: bold;
+            display: inline-block;
+            width: 80px;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 120px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: none; /* 사용자가 크기를 조정하지 못하도록 설정 */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 버튼 간의 간격 */
+            margin-top: 10px;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"] {
+            background-color: #dc3545; /* 빨간색 버튼 */
+        }
+
+        button[type="button"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>글 수정</h1>
+
+    <form th:action="@{/board/edit/{postId}(postId=${postId})}" method="post" th:object="${postDto}">
+        <div>
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" th:field="*{title}" placeholder="제목을 입력하세요">
+        </div>
+        <div>
+            <label for="content">내용</label>
+            <textarea id="content" name="content" th:field="*{content}" placeholder="내용을 입력하세요"></textarea>
+        </div>
+        <div class="button-group">
+            <button type="submit">수정 완료</button>
+            <button type="button" onclick="window.location.href='/board'">수정 취소</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 보기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .button-link,
+        .button-submit,
+        .button-delete {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            margin-right: 10px; /* 간격 추가 */
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-link {
+            background-color: #007bff;
+        }
+
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+
+        .button-submit {
+            background-color: #28a745; /* 초록색 수정 버튼 */
+        }
+
+        .button-submit:hover {
+            background-color: #218838; /* 더 진한 초록색 */
+        }
+
+        .button-delete {
+            background-color: #dc3545; /* 빨간색 삭제 버튼 */
+        }
+
+        .button-delete:hover {
+            background-color: #c82333; /* 더 진한 빨간색 */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${post.title}"></h1>
+    <p th:text="${post.content}"></p>
+
+    <!-- 현재 사용자 ID와 작성자 ID를 비교하여 수정 및 삭제 링크 표시 -->
+    <div th:if="${post != null and post.user != null}">
+        <p>User ID: <span th:text="${post.user.userId != null ? post.user.userId : 'Unknown'}"></span></p>
+    </div>
+
+    <div th:if="${currentUserId == post.user.userId}">
+        <a th:href="@{/board/edit/{postId}(postId=${post.id})}" class="button-submit">수정</a>
+        <form th:action="@{/board/delete/{postId}(postId=${post.id})}" method="post" style="display:inline;">
+            <button type="submit" class="button-delete">삭제</button>
+        </form>
+    </div>
+
+    <a th:href="@{/board}" class="button-link">목록으로 돌아가기</a>
+</div>
+</body>
+</html>

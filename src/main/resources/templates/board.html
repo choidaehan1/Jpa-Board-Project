@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px; /* 패딩을 줄여서 공간을 좁힘 */
+            position: relative;
+            margin-top: 10px; /* 상단 여백을 조정 */
+            margin-bottom: 10px; /* 하단 여백을 조정 */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 15px 0; /* 마진을 줄여서 공간을 좁힘 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px; /* 테이블 아래 마진을 줄여서 공간을 좁힘 */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px; /* 패딩을 줄여서 공간을 좁힘 */
+            text-align: center;
+            vertical-align: middle; /* 텍스트를 수직 중앙 정렬 */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 15px; /* 기존의 상단 여백 조정 */
+            margin-bottom: 5px; /* 아래쪽 여백을 줄임 */
+        }
+
+        .pagination ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .pagination ul li {
+            display: inline;
+            margin: 0 3px; /* 간격을 줄여서 공간을 좁힘 */
+        }
+
+        .pagination ul li a {
+            text-decoration: none;
+            padding: 6px 10px; /* 패딩을 줄여서 버튼 크기 축소 */
+            background-color: #f2f2f2;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .pagination ul li.active a {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination ul li.disabled a {
+            pointer-events: none;
+            background-color: #ddd;
+            color: #777;
+        }
+
+        .create-link, .logout-link {
+            display: inline-block;
+            padding: 10px 20px; /* 패딩을 늘려서 버튼 크기 확대 */
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px; /* 글꼴 크기를 조금 키움 */
+            margin-bottom: 15px; /* 추가된 여백 */
+        }
+
+        .create-link:hover, .logout-link:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-link {
+            background-color: #dc3545;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container"> <!-- 위쪽 여백 조정을 위해 margin-top 삭제 -->
+    <h1>게시판</h1>
+
+    <!-- 로그아웃 및 글쓰기 버튼 -->
+    <div style="text-align: right; margin-bottom: 15px;"> <!-- 하단 여백 줄임 -->
+        <a th:href="@{/board/create}" class="create-link">글 작성</a>
+        <a th:if="${session.userId}" th:href="@{/user/logout}" class="logout-link">로그아웃</a>
+    </div>
+
+    <!-- 게시글 목록을 표시하는 테이블 -->
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:if="${#lists.isEmpty(posts)}">
+            <tr>
+                <td colspan="4">게시물이 없습니다.</td>
+            </tr>
+        </th:block>
+        <th:block th:each="post, postStat : ${posts}">
+            <tr th:class="${postStat.odd}? 'odd'">
+                <td th:text="${post.id}"></td>
+                <td><a th:href="@{/board/{postId}(postId=${post.id})}" th:text="${post.title}"></a></td>
+                <td th:text="${post.user != null ? post.user.userId : 'Unknown'}"></td>
+                <td th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <!-- 페이지네이션 버튼 -->
+    <div class="pagination">
+        <ul>
+            <li th:class="${posts.first}? 'disabled'">
+                <a th:if="${not posts.first}" th:href="@{/board(page=0, size=${posts.size}, sort=${posts.sort})}"><i class="fas fa-angle-double-left"></i></a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(1, posts.totalPages)}" th:class="${pageNumber == posts.number + 1}? 'active'">
+                <a th:href="@{/board(page=${pageNumber - 1}, size=${posts.size}, sort=${posts.sort})}" th:text="${pageNumber}"></a>
+            </li>
+            <li th:class="${posts.last}? 'disabled'">
+                <a th:if="${not posts.last}" th:href="@{/board(page=${posts.totalPages - 1}, size=${posts.size}, sort=${posts.sort})}"><i class="fas fa-angle-double-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
