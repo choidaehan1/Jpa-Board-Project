@@ -5,6 +5,11 @@
 # 구조 및 설계
 ![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/543d3eac-d410-494a-8030-bf2506d6fd73)
 
+# 게시판 API
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/87b24c5b-ce78-4ea1-852e-b9cd352b1a04)<br>
+
+# 유저 API
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/46e717d4-2727-4267-a7ad-640cf8cac022)
 
 # 기능
 회원관리: 회원가입, 로그인(Session), 로그아웃 <br>
