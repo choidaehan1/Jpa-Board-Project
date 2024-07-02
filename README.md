@@ -24,3 +24,4 @@ Git Hub, IntelliJ IDEA
 
 # 개발
 설계 // 백엔드 // 프론트엔드 // 퍼블리싱 : 최대한(@choidaehan1)
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/8c9bcc7e-c08c-4933-bf95-8af58140e3f3)
