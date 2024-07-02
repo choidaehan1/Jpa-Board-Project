@@ -9,7 +9,8 @@
 ![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/87b24c5b-ce78-4ea1-852e-b9cd352b1a04)<br>
 
 # 유저 API
-![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/a42023a3-105a-425a-a896-b67f928c5c0f)
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/db423e42-8722-4d68-979a-b1f240bb9ac2)
+
 
 
 # 기능
