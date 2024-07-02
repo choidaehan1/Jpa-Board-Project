@@ -1,7 +1,8 @@
 # 소개
 웹 개발의 기본기를 습득할 수 있는 게시판 프로젝트입니다.  <br>
 
-![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/37bd5c68-368d-4ee8-b0da-db5d6c32fac1)
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/37bd5c68-368d-4ee8-b0da-db5d6c32fac1) <br>
+
 # 기능
 회원관리: 회원가입, 로그인(Session), 로그아웃 <br>
 게시판 기능: 게시글 작성, 조회, 수정, 삭제 <br>
@@ -9,8 +10,11 @@
 
 # 기술스택
 백엔드: Spring Data JPA, Java <br>
-프론트엔드: Thymeleaf, Bootstrap, JavaScript <br>
+프론트엔드: Thymeleaf, Bootstrap, JavaScript, Html/Css <br>
 데이터베이스: MySQL
 
 # 도구 및 환경 
-Git, IntelliJ IDEA
+Git Hub, IntelliJ IDEA
+
+# 프로젝트 기간
+
