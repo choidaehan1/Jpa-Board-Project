@@ -1,7 +1,10 @@
-#  개요
 
-만든목적
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/37bd5c68-368d-4ee8-b0da-db5d6c32fac1)
 
+#  소개
+웹 개발의 기본기를 습득할 수 있는 게시판 프로젝트입니다.
+# 만든목적
+jpa 
 일정
 사용 기술 및 개발 환경
 기술 스택:
