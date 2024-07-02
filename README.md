@@ -12,7 +12,7 @@
 ![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/a20c821c-0268-42df-a084-52edbe20b3ca)
 
 # 실행화면 링크
-https://youtube.com/@user-ds2ev2ec5x?si=XAH2_hDHVPjf6iid
+[https://youtube.com/@user-ds2ev2ec5x?si=XAH2_hDHVPjf6iid](https://youtu.be/h20yV5xoPTM?si=yDVrz5kANLwDYxDw)
 
 
 # 기능
