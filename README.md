@@ -9,7 +9,8 @@
 ![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/87b24c5b-ce78-4ea1-852e-b9cd352b1a04)<br>
 
 # 유저 API
-![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/46e717d4-2727-4267-a7ad-640cf8cac022)
+![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/a42023a3-105a-425a-a896-b67f928c5c0f)
+
 
 # 기능
 회원관리: 회원가입, 로그인(Session), 로그아웃 <br>
