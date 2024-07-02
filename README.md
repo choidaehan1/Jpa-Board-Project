@@ -1,5 +1,5 @@
 # 소개
-웹 개발의 기본기를 습득할 수 있는 게시판 프로젝트입니다.  <br>
+웹 개발의 기본기를 습득할 수 있는 게시판 프로젝트를 만들어 보았습니다.  <br>
 
 ![image](https://github.com/choidaehan1/Jpa-Board-Project/assets/155132549/37bd5c68-368d-4ee8-b0da-db5d6c32fac1) <br>
 # ERD
